@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import AddNewExpense from "../components/AddNewExpense";
 import ExpenseList from "../components/ExpenseList";
 import StatsDropdown from "../components/StatsDropdown";
+import useSavedExpenses from "../components/hooks/useSavedExpenses";
 
 const MainPage = () => {
   const [showAddForm, setShowAddForm] = useState(false); // Controls visibility of the form
-  const [expenses, setExpenses] = useState([]);
+  const [expenses, setExpenses] = useSavedExpenses();
 
   const handleAddExpense = (expense) => {
     setExpenses((prev) => [expense, ...prev]);
@@ -39,6 +40,7 @@ const MainPage = () => {
       <section className="p-6">
         <ExpenseList expenses={expenses} />
       </section>
+
 
       </section>
 

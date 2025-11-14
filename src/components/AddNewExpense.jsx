@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 const AddNewExpense = ({ closeForm, onAddExpense }) => {
-  const [category, setCategory] = useState("shopping");
+  const [category, setCategory] = useState("Shopping");
   const [title, setTitle] = useState("");
   const [amount, setAmount] = useState("");
   const [date, setDate] = useState(new Date().toISOString().split("T")[0]);
