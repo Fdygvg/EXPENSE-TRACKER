@@ -29,14 +29,14 @@ setTitle((prev)=> prev + " ");
   };
   return (
     <>
-      <form onSubmit={handleSubmit} style={styles.form}>
+      <form onSubmit={handleSubmit} className="expense-form">
         <h2>Add New Expense</h2>
         {/* CATEGORY */}
         <label>
           Category: <select
             value={category}
             onChange={(e) => setCategory(e.target.value)}
-            style={styles.input}
+            className="expense-form-input"
           >
             <option value="Shopping">Shopping</option>
             <option value="Transport">Transport</option>
@@ -54,7 +54,7 @@ setTitle((prev)=> prev + " ");
             placeholder="e.g. Movie ticket"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            style={styles.input}
+            className="expense-form-input"
           />
         </label>
 
@@ -66,7 +66,7 @@ setTitle((prev)=> prev + " ");
             placeholder="e.g. 5000"
             value={amount}
             onChange={(e) => setAmount(e.target.value)}
-            style={styles.input}
+            className="expense-form-input"
           />
         </label>
 
@@ -77,16 +77,16 @@ setTitle((prev)=> prev + " ");
             type="date"
             value={date}
             onChange={(e) => setDate(e.target.value)}
-            style={styles.input}
+            className="expense-form-input"
           />
         </label>
 
         {/* BUTTONS */}
-        <div style={styles.buttonRow}>
-          <button type="submit" style={styles.addBtn}>
+        <div className="expense-form-buttons">
+          <button type="submit" className="expense-form-add-button">
             Add
           </button>
-          <button type="button" onClick={closeForm} style={styles.cancelBtn}>
+          <button type="button" onClick={closeForm} className="expense-form-cancel-button">
             Cancel
           </button>
         </div>
@@ -96,44 +96,3 @@ setTitle((prev)=> prev + " ");
 };
 
 export default AddNewExpense;
-
-const styles = {
-  form: {
-    border: "1px solid #ddd",
-    borderRadius: "8px",
-    padding: "20px",
-    display: "flex",
-    flexDirection: "column",
-    gap: "10px",
-  },
-  input: {
-    width: "100%",
-    padding: "8px",
-    marginTop: "4px",
-    borderRadius: "6px",
-    border: "1px solid #ccc",
-  },
-  buttonRow: {
-    display: "flex",
-    gap: "10px",
-    marginTop: "10px",
-  },
-  addBtn: {
-    flex: 1,
-    background: "#28a745",
-    color: "white",
-    border: "none",
-    padding: "10px",
-    borderRadius: "6px",
-    cursor: "pointer",
-  },
-  cancelBtn: {
-    flex: 1,
-    background: "#dc3545",
-    color: "white",
-    border: "none",
-    padding: "10px",
-    borderRadius: "6px",
-    cursor: "pointer",
-  },
-};

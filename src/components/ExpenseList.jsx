@@ -1,7 +1,6 @@
 import React from "react";
 import { useMemo } from "react";
 import { Link } from "react-router-dom";
-import { FaArrowDown91 } from "react-icons/fa6";
 
 
 
@@ -33,7 +32,7 @@ const ExpenseList = ({ expenses }) => {
 
   // Now the early return comes AFTER the hook
   if (expenses.length === 0) {
-    return <p>No expenses yet 😴...</p>;
+    return <p className="no-expenses-message">No expenses yet 😴...</p>;
   }
 
   return (
@@ -46,24 +45,24 @@ const ExpenseList = ({ expenses }) => {
           const totalCount = categoryExpenses.length;
 
           return (
-            <div key={category} style={style.div}>
-              <h3 style={{ fontWeight: 'bold', marginBottom: '10px' }}>
-                {category} - Total: ${total.toFixed(2)} ({totalCount} {totalCount === 1 ? 'expense' : 'expenses'}) <FaArrowDown91 />
+            <div key={category} className="expense-category-container">
+              <h3 className="category-header">
+                {category} - Total: ₦{total.toFixed(2)} ({totalCount} {totalCount === 1 ? 'expense' : 'expenses'})
               </h3>
               {displayedExpenses.map((expense) => (
                 <li
                   key={expense.id}
-                  className="flex justify-between bg-gray-100 p-3 rounded-lg shadow-sm"
+                  className="expense-item"
                 >
-                  <span className="font-medium">{expense.title}</span>
-                  <span className="font-semibold">${expense.amount}</span>
-                  <span>{expense.date}</span>
+                  <span className="expense-title">{expense.title}</span>
+                  <span className="expense-amount">₦{expense.amount}</span>
+                  <span className="expense-date">{expense.date}</span>
                 </li>
               ))}
               {hasMore && (
                 <Link 
                   to={`/category/${encodeURIComponent(category)}`}
-                  style={style.showMoreButton}
+                  className="show-more-button"
                 >
                   Show More ({categoryExpenses.length - 5} more {categoryExpenses.length - 5 === 1 ? 'expense' : 'expenses'})
                 </Link>
@@ -77,26 +76,3 @@ const ExpenseList = ({ expenses }) => {
 };
 
 export default ExpenseList;
-
-// =================== STYLE OBJECT =====================
-
-const style = {
-  div: {
-    color: "red",
-    border: "2px red solid",
-    margin: "10px",
-    padding: "15px"
-  },
-  showMoreButton: {
-    display: "inline-block",
-    marginTop: "10px",
-    padding: "8px 16px",
-    background: "#007bff",
-    color: "white",
-    textDecoration: "none",
-    borderRadius: "6px",
-    fontSize: "14px",
-    fontWeight: "500",
-    cursor: "pointer"
-  }
-};

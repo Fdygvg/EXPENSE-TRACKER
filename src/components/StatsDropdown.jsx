@@ -42,42 +42,19 @@ const StatsDropdown = ({ expenses }) => {
 
   return (
     <>
-      <button style={styles.toggleButton} onClick={() => setDropdown((prev) => !prev)}>
+      <button className="stats-toggle-button" onClick={() => setDropdown((prev) => !prev)}>
         Show Stats
         <FaArrowDown />
       </button>
       {dropdown && (
-        <div style={styles.panel}>
-          <p>Total spent today: ${totalToday.toFixed(2)}</p>
-          <p>Total spent this month: ${totalThisMonth.toFixed(2)}</p>
-          <p>Total spent this year: ${totalThisYear.toFixed(2)}</p>
+        <div className="stats-panel">
+          <p>Total spent today: ₦{totalToday.toFixed(2)}</p>
+          <p>Total spent this month: ₦{totalThisMonth.toFixed(2)}</p>
+          <p>Total spent this year: ₦{totalThisYear.toFixed(2)}</p>
         </div>
       )}
     </>
   );
-};
-
-const styles = {
-  toggleButton: {
-    display: "inline-flex",
-    alignItems: "center",
-    gap: "0.5rem",
-    padding: "0.75rem 1.25rem",
-    borderRadius: "0.5rem",
-    border: "none",
-    cursor: "pointer",
-    fontWeight: 600,
-    backgroundColor: "#2563eb",
-    color: "white",
-  },
-  panel: {
-    marginTop: "0.75rem",
-    padding: "1rem",
-    textAlign: "left",
-    borderRadius: "0.75rem",
-    backgroundColor: "#f1f5f9",
-    lineHeight: 1.5,
-  },
 };
 
 export default StatsDropdown;
